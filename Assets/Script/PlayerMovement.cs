@@ -20,12 +20,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Update(){
         input = Input.GetAxisRaw("Horizontal");
-        if(input < 0){
-            spriteRenderer.flipX = true;
+        if (input == -1 && Mathf.Abs(transform.rotation.eulerAngles.y - 180) > 0.1f) {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        } else if (input == 1 && Mathf.Abs(transform.rotation.eulerAngles.y - 0) > 0.1f) {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-        else if(input > 0){
-            spriteRenderer.flipX = false;
-        }
+
 
         isGrounded = Physics2D.OverlapCircle(feetPosition.position, groundCheckCircle, groundLayer);
 

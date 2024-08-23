@@ -1,11 +1,13 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour
+public class Player : MonoBehaviour
 {
-    public EnemyPatrol script;
     public int maxHealth = 100;
-    int currentHealth;
+    public int currentHealth;
     public Animator animator;
+    public Image healthBar;
     void Start()
     {
         currentHealth = maxHealth;
@@ -13,6 +15,8 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage){
         currentHealth -= damage;
+
+        healthBar.fillAmount = Mathf.Clamp(currentHealth / maxHealth, 0, 1);
 
         animator.SetTrigger("Hurt");
 
@@ -23,9 +27,7 @@ public class Enemy : MonoBehaviour
 
     public void Die(){
 
-        animator.SetBool("Death", true);
-
-        script.speed = 0;
+        animator.SetBool("IsDead", true);
 
         // GetComponent<Collider2D>().enabled = false;
 

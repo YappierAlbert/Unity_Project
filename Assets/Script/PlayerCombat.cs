@@ -3,7 +3,9 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     public Animator animator;
+    public GameObject shoot;
 
+    public int Weapon = 0;
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
@@ -11,13 +13,22 @@ public class PlayerCombat : MonoBehaviour
     public int attackDamage = 40;
     public float attackRate = 2f;
     float nextAttackTime = 0f;
-    void Update()
+    async void Update()
     {
+        if(Input.GetKeyDown(KeyCode.E) && Weapon == 0){
+            Weapon = 1;
+        }else if(Input.GetKeyDown(KeyCode.E) && Weapon == 1){
+            Weapon = 0;
+        }
+
         if(Time.time >= nextAttackTime){
-            if(Input.GetMouseButtonDown(0)){
+            if(Input.GetMouseButtonDown(0) && Weapon == 0){
             animator.SetTrigger("Attack");
             Attack();
             nextAttackTime = Time.time + 1f / attackRate;
+            }else if(Input.GetMouseButtonDown(0) && Weapon == 1){
+                shoot.GetComponent<Shooting>().Shoot();
+                nextAttackTime = Time.time + 1f / attackRate;
             }
         }
         

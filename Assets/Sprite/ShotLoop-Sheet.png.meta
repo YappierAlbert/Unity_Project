@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: 8cb936665af6c1c4a9923485ad0bbe95
+guid: fbdc436fb3ae6a6408200a84f7706505
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3571635775238715396
-    second: HURT_0
+      213: -274549069830704790
+    second: ShotLoop-Sheet_0
   - first:
-      213: -6552392919759675800
-    second: HURT_1
+      213: 2868270679548618853
+    second: ShotLoop-Sheet_1
   - first:
-      213: -4191814458887339610
-    second: HURT_2
+      213: 3418327566947634176
+    second: ShotLoop-Sheet_2
+  - first:
+      213: -8321496093868815569
+    second: ShotLoop-Sheet_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -57,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -106,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HURT_0
+      name: ShotLoop-Sheet_0
       rect:
         serializedVersion: 2
-        x: 33
-        y: 30
-        width: 25
-        height: 34
+        x: 26
+        y: 18
+        width: 12
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4083e2270dff09130800000000000000
-      internalID: 3571635775238715396
+      spriteID: a61b35b531b903cf0800000000000000
+      internalID: -274549069830704790
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HURT_1
+      name: ShotLoop-Sheet_1
       rect:
         serializedVersion: 2
-        x: 129
-        y: 30
-        width: 25
-        height: 34
+        x: 90
+        y: 19
+        width: 12
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 86e90f40b593115a0800000000000000
-      internalID: -6552392919759675800
+      spriteID: 568e92e7cf42ec720800000000000000
+      internalID: 2868270679548618853
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HURT_2
+      name: ShotLoop-Sheet_2
       rect:
         serializedVersion: 2
-        x: 225
-        y: 30
-        width: 25
-        height: 34
+        x: 155
+        y: 20
+        width: 10
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,8 +168,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6a18ca575fea3d5c0800000000000000
-      internalID: -4191814458887339610
+      spriteID: 00cc6d1afc6507f20800000000000000
+      internalID: 3418327566947634176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotLoop-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 19
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2b062d446b148c80800000000000000
+      internalID: -8321496093868815569
       vertices: []
       indices: 
       edges: []
@@ -185,9 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      HURT_0: 3571635775238715396
-      HURT_1: -6552392919759675800
-      HURT_2: -4191814458887339610
+      ShotLoop-Sheet_0: -274549069830704790
+      ShotLoop-Sheet_1: 2868270679548618853
+      ShotLoop-Sheet_2: 3418327566947634176
+      ShotLoop-Sheet_3: -8321496093868815569
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
