@@ -18,6 +18,13 @@ public class PlayerMovement : MonoBehaviour
     public float jumpTimeCounter;
     private bool isJumping;
 
+    AudioManager audioManager;
+
+    private void Awake(){
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
+
     void Update(){
         input = Input.GetAxisRaw("Horizontal");
         if (input == -1 && Mathf.Abs(transform.rotation.eulerAngles.y - 180) > 0.1f) {
@@ -31,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(isGrounded == true && Input.GetButtonDown("Jump")){
             isJumping = true;
+            audioManager.PlaySFX(audioManager.Jump);
             jumpTimeCounter = jumpTime;
             playerRb.velocity = Vector2.up * jumpForce;
         }

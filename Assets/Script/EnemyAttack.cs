@@ -13,41 +13,42 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
     private float cooldownTimer = Mathf.Infinity;
     private Animator anim;
-    private bool isAttacking = false;
     private Player playerHealth;
+    private BetterPatrol enemyPatrol;
+
+    AudioManager audioManager;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        enemyPatrol = GetComponentInParent<BetterPatrol>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void Update()
     {
         cooldownTimer += Time.deltaTime;
 
-        if (PlayerInSight() && cooldownTimer >= attackCooldown && !isAttacking)
-        {
-            StartCoroutine(AttackPlayer());
+        if (PlayerInSight()){
+            if (cooldownTimer >= attackCooldown)
+            {
+                cooldownTimer = 0;
+                anim.SetTrigger("Attack");
+                audioManager.PlaySFX(audioManager.Sword);
+            }
         }
-    }
 
-    private IEnumerator AttackPlayer()
-    {
-        isAttacking = true;
-        anim.SetTrigger("Attack");
-
-        yield return new WaitForSeconds(0.2f); 
-
-        cooldownTimer = 0; 
-        isAttacking = false;
+        if(enemyPatrol != null){
+            enemyPatrol.enabled = !PlayerInSight();
+        }
     }
 
     public bool PlayerInSight()
     {
-        Vector3 boxCenter = capsuleCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance;
-        Vector3 boxSize = new Vector3(capsuleCollider.bounds.size.x * range, capsuleCollider.bounds.size.y, capsuleCollider.bounds.size.z);
-
-        RaycastHit2D hit = Physics2D.BoxCast(boxCenter, boxSize, 0, Vector2.left, 0, playerLayer);
+        RaycastHit2D hit = 
+            Physics2D.BoxCast(capsuleCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
+            new Vector3(capsuleCollider.bounds.size.x * range, capsuleCollider.bounds.size.y, capsuleCollider.bounds.size.z),
+            0, Vector2.left, 0 , playerLayer);
 
         if (hit.collider != null)
         {
@@ -61,9 +62,8 @@ public class EnemyAttack : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Vector3 boxCenter = capsuleCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance;
-        Vector3 boxSize = new Vector3(capsuleCollider.bounds.size.x * range, capsuleCollider.bounds.size.y, capsuleCollider.bounds.size.z);
-        Gizmos.DrawWireCube(boxCenter, boxSize);
+        Gizmos.DrawWireCube(capsuleCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
+            new Vector3(capsuleCollider.bounds.size.x * range, capsuleCollider.bounds.size.y, capsuleCollider.bounds.size.z));
     }
 
     private void DamagePlayer(){
